@@ -69,10 +69,16 @@ workflows:
            context:
              - CLI
       - promote_to_production:
+            context:
+             - CLI
             requires:
              - create_and_deploy_front_end
-      - get_last_deployment_id
+      - get_last_deployment_id:
+            context:
+             - CLI
       - clean_up_old_front_end:
+            context:
+             - CLI
             requires:
              - get_last_deployment_id
              - promote_to_production
